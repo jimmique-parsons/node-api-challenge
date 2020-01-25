@@ -6,7 +6,7 @@ const server = express();
 server.use(express.json());
 
 server.use('/api/projects', projectRouter);
-//server.use('/api/actions', actionRouter);
+server.use('/api/actions', actionRouter);
 
 server.get('/', (req, res) => {
     res.send(`<h1>API For Projects and Actions</h1>`);

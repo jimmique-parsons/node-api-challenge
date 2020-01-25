@@ -34,6 +34,30 @@ router.post('/', validateProjectBody, async (req, res, next) => {
     }
 });
 
+router.put('/:id', validateProjectId, validateProjectBody, async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const updatedProject = await Projects.update(id, req.project);
+        res.status(200).json(updatedProject);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.delete('/:id', validateProjectId, async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const count = await Projects.remove(id);
+        if (count <= 0) {
+            next({ status: 500, message: "Error while deleting project" });
+        } else {
+            res.status(200).json({ message: "Project successfully deleted" });
+        }
+    } catch (error) {
+        next(error);
+    }
+});
+
 async function validateProjectId(req, res, next) {
     const { id } = req.params;
     try {
