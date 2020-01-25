@@ -40,13 +40,32 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    - Routing: A way to select which request handler function is executed based on
+     the URL and the HTTP method.
+
+    - Convenience Helpers: Express adds many convenience helpers like
+     response.status(), response.send(), that make it more convenient to write web apps and api servers.
+
 - [ ] Describe Middleware?
+
+ Middleware is functions that get the request and response objects, and can operate
+ on them. They either return the response or call the next middleware in the
+ pipeline. Middleware can change the req/res objects, but it's optional.
 
 - [ ] Describe a Resource?
 
+ A resource is the target of an HTTP request, identified by a URI (string that
+ refers to a resource). It can be a document, a photo, json, or anything else.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+It can return a 2xx status code.
+
 - [ ] How can we partition our application into sub-applications?
+
+ We can use Express Routers. We can set up separate routers for different
+ resources, which each have their own routing and middleware. From there we can import
+ and compose them all together in our main server.js file.
 
 ## Minimum Viable Product
 

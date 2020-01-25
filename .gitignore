@@ -4,6 +4,9 @@
 # VSCode settings
 .vscode/
 
+# Vim
+ *.swp
+
 # Logs
 logs
 *.log
